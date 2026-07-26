@@ -1,0 +1,7 @@
+"specification","description","convention","closed_store_proportional_change","proportional_NJ","proportional_NJ_se","proportional_GAP","proportional_GAP_se","n","note"
+3,"Exclude managers from employment count","printed-table reproduction",-2,0.0506958039045894,0.0653968683541553,0.283308927174736,0.340379995555793,357,"raw symmetric proportional-change formula; matches printed Table 5"
+3,"Exclude managers from employment count","paper-stated method",-1,0.0535631078555944,0.0579907251954449,0.395007199465419,0.30150198900951,357,"closed stores assigned -1 as stated in footnote 18"
+4,"Weight part-time as 0.4 x full-time","printed-table reproduction",-2,0.0562280079913861,0.0624888181958598,0.29944774950296,0.325269034789755,357,"raw symmetric proportional-change formula; matches printed Table 5"
+4,"Weight part-time as 0.4 x full-time","paper-stated method",-1,0.0590953119423911,0.054631341939397,0.411146021793643,0.284011355815344,357,"closed stores assigned -1 as stated in footnote 18"
+5,"Weight part-time as 0.6 x full-time","printed-table reproduction",-2,0.0395344965362152,0.0566246272645482,0.165525555957054,0.294832663542918,357,"raw symmetric proportional-change formula; matches printed Table 5"
+5,"Weight part-time as 0.6 x full-time","paper-stated method",-1,0.0424018004872202,0.0478492229570775,0.277223828247737,0.248918942878214,357,"closed stores assigned -1 as stated in footnote 18"

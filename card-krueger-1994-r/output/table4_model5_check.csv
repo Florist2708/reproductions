@@ -1,0 +1,3 @@
+"variant","formula","estimate","std_error","regression_SE","joint_p_all_controls","n"
+"published table note","GAP + chain + ownership + region",11.9792365829867,7.41912142269347,8.75248871085087,0.404569533142913,357
+"supplied check.sas","GAP + chain + region (ownership omitted)",11.9130641114798,7.39440938651714,8.74016464494467,0.30749094799045,357
