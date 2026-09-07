@@ -1,7 +1,6 @@
 suppressPackageStartupMessages({
   library(AER)
-  library(tidyverse)
-})
+  library(tidyverse) })
 
 dir.create("outputs", showWarnings = FALSE)
 
@@ -12,8 +11,7 @@ schools <- CASchools |>
     testscr = (read + math) / 2,
     str = students / teachers,
     english_pct = english,
-    lunch_pct = lunch
-  )
+    lunch_pct = lunch)
 
 # Canonical specifications used in the Stock & Watson example.
 
@@ -38,25 +36,20 @@ coef_tbl <- tibble(
   model = c(
     "Model 1: testscr ~ str",
     "Model 2: testscr ~ str + english",
-    "Model 3: testscr ~ str + english + lunch"
-  ),
+    "Model 3: testscr ~ str + english + lunch"),
   str_estimate = c(coef(m1)["str"], coef(m2)["str"], coef(m3)["str"]),
   str_se = c(
     sqrt(vcov(m1)["str", "str"]),
     sqrt(vcov(m2)["str", "str"]),
-    sqrt(vcov(m3)["str", "str"])
-  )
-) |>
+    sqrt(vcov(m3)["str", "str"]))) |>
   mutate(
     lower_95 = str_estimate - 1.96 * str_se,  # lower bound of 95% CI
-    upper_95 = str_estimate + 1.96 * str_se   # upper bound of 95% CI
-  )
+    upper_95 = str_estimate + 1.96 * str_se)   # upper bound of 95% CI
 
 # Rounded values from Stock and Watson that our estimates should match.
 canonical <- tibble(
   model = coef_tbl$model,
-  canonical_str = c(-2.28, -1.10, -1.00)
-)
+  canonical_str = c(-2.28, -1.10, -1.00))
 
 # This part joins the estimates to the benchmark values to see whether the replication matches them.
 # `gap` measures the difference, and `matches_canonical` is TRUE if the gap is within 0.03 (which is generous for possible rounding error).
@@ -64,8 +57,7 @@ check_tbl <- coef_tbl |>
   left_join(canonical, by = "model") |>
   mutate(
     gap = str_estimate - canonical_str,
-    matches_canonical = abs(gap) < 0.03
-  )
+    matches_canonical = abs(gap) < 0.03)
 
 # Saving the comparison table and the two plots
 write_csv(check_tbl, "outputs/str_coefficients_check.csv")
@@ -78,8 +70,7 @@ scatter_plot <- ggplot(schools, aes(x = str, y = testscr)) +
     subtitle = "Each point is a California school district, 1998-99",
     x = "Student-teacher ratio (STR)",
     y = "Average test score",
-    caption = "Data: AER::CASchools"
-  ) +
+    caption = "Data: AER::CASchools") +
   theme_minimal(base_size = 12)
 
 coef_plot <- ggplot(check_tbl, aes(x = model, y = str_estimate)) +
@@ -90,8 +81,7 @@ coef_plot <- ggplot(check_tbl, aes(x = model, y = str_estimate)) +
     title = "Estimated STR effect across models",
     subtitle = "Red = this replication (95% CI), Green = canonical rounded values",
     x = NULL,
-    y = "Coefficient on STR"
-  ) +
+    y = "Coefficient on STR") +
   theme_minimal(base_size = 12) +
   theme(axis.text.x = element_text(angle = 12, hjust = 1))
 
